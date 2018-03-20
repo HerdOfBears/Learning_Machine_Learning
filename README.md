@@ -1,5 +1,5 @@
 # Learning Machine Learning
-This is a repository of scripts I wrote while learning different topics in machine learning.
+This is a repository of scripts I wrote while learning different topics in machine learning.<br />
 The majority of scripts are written using Python 3. Octave was used for Andrew Ng's Intro to Machine Learning Coursera Course.
 In the Python_ML folder is a script where I (re)wrote each of the functions for a feedforward neural network (rather than using an API, or scikit-learn) when first learning feedforward neural networks. In retrospect, it is not very well done, and can be significantly improved (one simple improvement would be fully vectorizing each of the functions rather than using loops).
 The Intro_to_ML_Ng folder contains scripts I wrote while completing Andrew Ng's Intro to ML Coursera course.
