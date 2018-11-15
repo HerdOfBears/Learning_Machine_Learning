@@ -1,5 +1,6 @@
 """
 Author: Jyler Menard
+USES DOUBLE Q-LEARNING which is NOT the same as a double DQN. 
 Purpose implement a Deep Q Network that uses double Q-learning rather than Q-learning.
 Q-learning can easily overestimate the value of an action from a state, resulting in overoptimistic value estimates.
 Double Q-learning decouples the action selection step and the action evaluation step. 
@@ -11,6 +12,7 @@ import matplotlib.pyplot as plt
 import gym
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
+
 #import reinforcement.cart_pole_rbf as cpr
 GAMMA = 0.99
 ALL_POSSIBLE_ACTIONS = [0,1,2]
@@ -151,7 +153,7 @@ class NeuralNetwork():
 
 		for i in range(batch_size):
 			s, a, r, s_prime,temp_G = temp_batches[i]
-			V_s_prime = self.predict(s_prime)
+			#V_s_prime = self.predict(s_prime)
 			#batch_G[i][a] = r + GAMMA*np.max(V_s_prime)
 			
 			batch_G[i] = temp_G
@@ -258,6 +260,17 @@ def main(N=100):
 
 	#env = gym.make("CartPole-v1")
 	env = gym.make(GAME)
+	record_bool = input("Record every perfect cube training episode? [Y/n]")
+	while True:
+		if record_bool not in ["Y","n"]:
+			print("Wrong input")
+		else:
+			break
+	if record_bool=="Y":
+		env = gym.wrappers.Monitor(env, "videos",force=True)
+	else:
+		pass
+		
 	D = len(env.observation_space.sample())
 	K = env.action_space.n
 
